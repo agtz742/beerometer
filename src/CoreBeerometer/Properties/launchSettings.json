@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "MailSettings__ToAddress": "contact2@beerometer.com",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },

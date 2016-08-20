@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Beer title! - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div id="sidebar">
+        <img src="~/img/IMG_0708.JPG" alt="Headshot" class="headshot" />
+        <span id="username">Beer McBeerson</span>
+        <ul class="menu">
+            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+            <li><a asp-controller="App" asp-action="About">About</a></li>
+            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+        </ul>
+    </div>
+    <div id="wrapper">
+        <div id="main">
+            <button id="sidebarToggle">Toggle Menu</button>
+            @RenderBody()
+        </div>
+        <div id="footer">
+            &copy; 2016 NHBSSSAD Ltd.
+        </div>
+    </div>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    @RenderSection("scripts", false)
+    <script type="text/javascript" src="~/js/site.js"></script>
+</body>
+</html>
