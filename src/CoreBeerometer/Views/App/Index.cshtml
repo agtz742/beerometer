@@ -1,4 +1,4 @@
-﻿@using System.Runtime.InteropServices
+﻿@model IEnumerable<CoreBeerometer.Models.Trip>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -23,5 +23,11 @@
     </div>
     <div class="col-md-6 col-xs-4">
         <h2>The Map!</h2>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Name : @item.DateCreated.ToString("d")</li>
+            }
+        </ul>
     </div>
 </div>

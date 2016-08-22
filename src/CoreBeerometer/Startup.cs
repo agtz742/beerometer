@@ -1,4 +1,5 @@
-﻿using CoreBeerometer.Sevices;
+﻿using CoreBeerometer.Models;
+using CoreBeerometer.Sevices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,20 +28,34 @@ namespace CoreBeerometer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(_config);
-            services.AddMvc();
             if (_environment.IsDevelopment() || _environment.IsEnvironment("Testing"))
             {
                 services.AddScoped<IMailService, DebugMailService>();
             }
+            services.AddDbContext<BeerContext>();
+            services.AddScoped<IBeerRepository, BeerRepository>();
+            services.AddTransient<BeerContextSeedData>();
+            services.AddLogging();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app,
+            IHostingEnvironment env,
+            ILoggerFactory loggerFactory,
+            BeerContextSeedData seeder,
+            ILoggerFactory factory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                factory.AddDebug(LogLevel.Information);
             }
+            else
+            {
+                factory.AddDebug(LogLevel.Error);
+            }
+
             app.UseStaticFiles();
             app.UseMvc(config =>
             {
@@ -50,6 +65,8 @@ namespace CoreBeerometer
                     defaults: new {controller = "App", action = "Index"}
                 );
             });
+
+            seeder.EnsureSeedData().Wait();
         }
     }
 }

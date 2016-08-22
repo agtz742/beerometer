@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
+using CoreBeerometer.Models;
 using CoreBeerometer.Sevices;
 using CoreBeerometer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace CoreBeerometer.Controllers.Web
 {
@@ -10,16 +13,29 @@ namespace CoreBeerometer.Controllers.Web
     {
         private readonly IMailService _mailService;
         private readonly IConfigurationRoot _configurationRoot;
+        private readonly IBeerRepository _repository;
+        private readonly ILogger<AppController> _logger;
 
-        public AppController(IMailService mailService, IConfigurationRoot configurationRoot)
+        public AppController(IMailService mailService, IConfigurationRoot configurationRoot, IBeerRepository repository, ILogger<AppController> logger)
         {
             _mailService = mailService;
             _configurationRoot = configurationRoot;
+            _repository = repository;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var data = _repository.GetAllTrips();
+                return View(data);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get trips in Index Page: {ex.Message}");
+                return Redirect("/error");
+            }
         }
 
         public IActionResult Contact()

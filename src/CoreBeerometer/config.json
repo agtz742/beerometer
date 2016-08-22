@@ -1,5 +1,8 @@
 {
   "MailSettings": {
-    "ToAddress":  "contact@beerometer.com"
-  } 
+    "ToAddress": "contact@beerometer.com"
+  },
+  "ConnectionStrings": {
+    "BeerContextConnection": "Server=(localdb)\\MSSQLLocalDb;Database=TheBeerDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+  }
 }
