@@ -4,5 +4,8 @@
   },
   "ConnectionStrings": {
     "BeerContextConnection": "Server=(localdb)\\MSSQLLocalDb;Database=TheBeerDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
-  }
+  },
+  "Keys": {
+    "BingKey": "kYHN9izTD4g0ZVhmjWm7~J-INAOVsugKml-mjx6jvKg~AlhnnRVJ5TEAuXrCUsWuDZ-eaj67JGuPdUbYjBCLB8SQA7DT4xTqRayy8Yb1z0EF"
+  } 
 }

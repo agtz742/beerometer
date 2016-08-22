@@ -1,10 +1,13 @@
-﻿using CoreBeerometer.Models;
+﻿using AutoMapper;
+using CoreBeerometer.Models;
 using CoreBeerometer.Sevices;
+using CoreBeerometer.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace CoreBeerometer
 {
@@ -34,9 +37,13 @@ namespace CoreBeerometer
             }
             services.AddDbContext<BeerContext>();
             services.AddScoped<IBeerRepository, BeerRepository>();
+            services.AddTransient<GeoCoordsService>();
             services.AddTransient<BeerContextSeedData>();
             services.AddLogging();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(config =>
+            {
+                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +53,12 @@ namespace CoreBeerometer
             BeerContextSeedData seeder,
             ILoggerFactory factory)
         {
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<TripViewModel, Trip>().ReverseMap();
+                config.CreateMap<StopViewModel, Stop>().ReverseMap();
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

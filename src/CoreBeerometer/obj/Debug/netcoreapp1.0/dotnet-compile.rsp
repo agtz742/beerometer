@@ -13,6 +13,7 @@
 --version:1.0.0.0
 --informational-version:1.0.0
 --target-framework:.NETCoreApp,Version=v1.0
+--reference:C:\Users\Alan\.nuget\packages\AutoMapper\5.1.1\lib\netstandard1.3\AutoMapper.dll
 --reference:C:\Users\Alan\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll
 --reference:C:\Users\Alan\.nuget\packages\Microsoft.AspNetCore.Authorization\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Authorization.dll
 --reference:C:\Users\Alan\.nuget\packages\Microsoft.AspNetCore.Cors\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Cors.dll
@@ -118,6 +119,7 @@
 --reference:C:\Users\Alan\.nuget\packages\System.Collections.Concurrent\4.0.12\ref\netstandard1.3\System.Collections.Concurrent.dll
 --reference:C:\Users\Alan\.nuget\packages\System.Collections.Immutable\1.2.0\lib\netstandard1.0\System.Collections.Immutable.dll
 --reference:C:\Users\Alan\.nuget\packages\System.Collections.NonGeneric\4.0.1\ref\netstandard1.3\System.Collections.NonGeneric.dll
+--reference:C:\Users\Alan\.nuget\packages\System.Collections.Specialized\4.0.1\ref\netstandard1.3\System.Collections.Specialized.dll
 --reference:C:\Users\Alan\.nuget\packages\System.ComponentModel\4.0.1\ref\netstandard1.0\System.ComponentModel.dll
 --reference:C:\Users\Alan\.nuget\packages\System.ComponentModel.Annotations\4.1.0\ref\netstandard1.4\System.ComponentModel.Annotations.dll
 --reference:C:\Users\Alan\.nuget\packages\System.ComponentModel.Primitives\4.1.0\ref\netstandard1.0\System.ComponentModel.Primitives.dll
@@ -199,6 +201,8 @@
 --resource:"C:\dev\beer\CoreBeerometer\src\CoreBeerometer\obj\Debug\netcoreapp1.0\CoreBeerometerdotnet-compile.deps.json",CoreBeerometer.deps.json
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Program.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Startup.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Controllers\Api\StopsController.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Controllers\Api\TripsController.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Controllers\Web\AppController.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Migrations\20160822173421_InitialDatabase.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Migrations\20160822173421_InitialDatabase.Designer.cs
@@ -210,5 +214,9 @@ C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Models\IBeerRepository.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Models\Stop.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Models\Trip.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Sevices\DebugMailService.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Sevices\GeoCoordsResult.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Sevices\GeoCoordsService.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\Sevices\IMailService.cs
 C:\dev\beer\CoreBeerometer\src\CoreBeerometer\ViewModels\ContactViewModel.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\ViewModels\StopViewModel.cs
+C:\dev\beer\CoreBeerometer\src\CoreBeerometer\ViewModels\TripViewModel.cs
